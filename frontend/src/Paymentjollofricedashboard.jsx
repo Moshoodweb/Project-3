@@ -4,11 +4,7 @@ import logoImage from "./assets/moshood-foods-logo.svg";
 import { useCart } from "./CartContext.jsx";
 import { useOrders } from "./OrdersContext.jsx";
 
-/* ─────────────────────────────────────────────────────────────────
-   All styles live here — injected into <head> once on mount.
-   This makes the component fully self-contained: drop it into any
-   React / Next.js / Vite project with zero extra config needed.
-───────────────────────────────────────────────────────────────── */
+
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
