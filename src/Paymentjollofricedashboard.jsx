@@ -477,7 +477,7 @@ export default function JollofHouseDashboard() {
     if (orderStatus === 'delivered' && lastStatusRef.current !== 'delivered') {
       // Show toast
       setToast({
-        message: '✓ Your food has been delivered!',
+        message: 'Your food has been delivered!',
         type: 'success',
       });
 

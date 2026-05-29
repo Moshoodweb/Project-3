@@ -2,11 +2,12 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import { sendMail } from "./mailer.js";
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 2026;
+const PORT = process.env.PORT || 2003;
 
 app.use(cors());
 app.use(express.json());
@@ -41,6 +42,14 @@ app.post("/register", async (req, res) => {
 		}
 
 		const user = await User.create({ firstName, lastName, email, password });
+
+		// Send welcome email (non-blocking)
+		sendMail({
+			to: email,
+			subject: "Welcome to our app",
+			text: `Hi ${firstName},\n\nThank you for registering.`,
+			html: `<p>Hi ${firstName},</p><p>Thank you for registering.</p>`,
+		}).catch((err) => console.error("Failed to send welcome email:", err.message));
 
 		return res.status(201).json({
 			message: "Registration successful",
